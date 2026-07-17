@@ -1,5 +1,5 @@
 const OpenAI = require("openai");
-const product = require("../config/product");
+const product = require("../product");
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
