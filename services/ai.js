@@ -1,38 +1,37 @@
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const product = require("../product");
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const SYSTEM_PROMPT = `أنت بوت مبيعات ذكي لمنتج "${product.name.ar}".
+const SYSTEM_PROMPT = `You are a smart sales bot for "${product.name.ar}".
 
-معلومات المنتج:
-- الوصف: ${product.description.ar}
-- السعر الحالي: ${product.price.ar}
-- السعر الأصلي: ${product.originalPrice.ar}
-- العرض: ${product.offer.ar}
-- طريقة الاستعمال: ${product.usage.ar}
-- التوصيل: ${product.delivery.ar}
-- الضمان: ${product.guarantee.ar}
-- طرق الدفع: ${product.paymentMethods.ar.join(", ")}
-- للتواصل: ${product.contact.ar}
+Product info:
+- Description: ${product.description.ar}
+- Current price: ${product.price.ar}
+- Original price: ${product.originalPrice.ar}
+- Offer: ${product.offer.ar}
+- How to use: ${product.usage.ar}
+- Delivery: ${product.delivery.ar}
+- Guarantee: ${product.guarantee.ar}
+- Payment: ${product.paymentMethods.ar.join(", ")}
+- Contact: ${product.contact.ar}
 
-مميزات المنتج:
+Features:
 ${product.features.ar.map((f) => "- " + f).join("\n")}
 
-قواعد:
-1. رد بالعربية دائماً
-2. كن ودوداً ومحترفاً
-3. حاول إقناع الزبون بالشراء
-4. إذا سأل عن السعر، ذكر العرض الخاص والخصم
-5. إذا سأل عن طريقة الاستعمال، اشرح بوضوح
-6. إذا سأل عن التوصيل، أخبره بالمدة وطرق التوصيل
-7. إذا تردد، ذكر الضمان وعرض الخصم
-8. لا تختلق معلومات غير موجودة
-9. إذا كان السؤال خارج نطاق المنتج، ودّع بلطف`;
+Rules:
+1. Always reply in Arabic
+2. Be friendly and professional
+3. Try to convince the customer to buy
+4. If they ask about price, mention the special offer and discount
+5. If they ask how to use, explain clearly
+6. If they ask about delivery, tell them the timeframe
+7. If they hesitate, mention the guarantee and discount
+8. Keep responses brief and persuasive`;
 
-const SYSTEM_PROMPT_FR = `Tu es un chatbot de vente intelligent pour le produit "${product.name.fr}".
+const SYSTEM_PROMPT_FR = `Tu es un chatbot de vente intelligent pour "${product.name.fr}".
 
-Informations produit:
+Infos produit:
 - Description: ${product.description.fr}
 - Prix actuel: ${product.price.fr}
 - Prix original: ${product.originalPrice.fr}
@@ -48,11 +47,11 @@ ${product.features.fr.map((f) => "- " + f).join("\n")}
 Règles:
 1. Réponds toujours en français
 2. Sois amical et professionnel
-3. Essaie de convaincre le client d'acheter
-4. Si le client demande le prix, mentionne l'offre spéciale
+3. Essaie de convaincre le client
+4. Si le client demande le prix, mentionne l'offre
 5. Si le client demande l'utilisation, explique clairement
 6. Si le client hésite, mentionne la garantie
-7. Sois persuasif mais honnête`;
+7. Sois persuasif mais bref`;
 
 function detectLanguage(text) {
   const arabicRegex = /[\u0600-\u06FF]/;
@@ -64,22 +63,19 @@ async function generateResponse(userMessage) {
   const systemPrompt = lang === "ar" ? SYSTEM_PROMPT : SYSTEM_PROMPT_FR;
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userMessage }
-      ],
-      max_tokens: 500,
-      temperature: 0.7
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.0-flash",
+      systemInstruction: systemPrompt
     });
 
-    return completion.choices[0].message.content;
+    const result = await model.generateContent(userMessage);
+    const response = result.response;
+    return response.text();
   } catch (error) {
-    console.error("OpenAI error:", error.message);
+    console.error("Gemini error:", error.message);
     return lang === "ar"
-      ? "شكراً لتواصلك معنا! للأسف حدث خطأ مؤقت. سنرد عليك قريباً. 🙏"
-      : "Merci de nous contacter! Une erreur temporaire s'est produite. Nous vous répondrons bientôt. 🙏";
+      ? "شكراً لتواصلك معنا! سنرد عليك قريباً."
+      : "Merci! Nous vous répondrons bientôt.";
   }
 }
 
