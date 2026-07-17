@@ -1,0 +1,78 @@
+{
+  "patterns": {
+    "بكم الثمن": "price",
+    "السعر": "price",
+    " Prix": "price",
+    "combien": "price",
+    "certo": "price",
+    "كيفاش نستعملو": "usage",
+    " طريقة الاستعمال": "usage",
+    "Comment utiliser": "usage",
+    "comment ça marche": "usage",
+    "وين نلقاه": "delivery",
+    "التوصيل": "delivery",
+    "Livraison": "delivery",
+    " livrer": "delivery",
+    "آمن": "safety",
+    "ضمان": "safety",
+    "Garantie": "safety",
+    "sûr": "safety",
+    " أريد أشري": "order",
+    " نريد نشري": "order",
+    " أشري": "order",
+    "commander": "order",
+    "acheter": "order",
+    "Je veux": "order",
+    "عرض": "offer",
+    "خصم": "offer",
+    "Offre": "offer",
+    "réduction": "offer",
+    "مرحبا": "greeting",
+    "bonjour": "greeting",
+    " salut": "greeting",
+    "slm": "greeting",
+    "السلام": "greeting"
+  },
+  "replies": {
+    "greeting": {
+      "ar": "أهلاً وسهلاً بيك! 👋 شحال فيك؟ تحب تعرف على دواء الصراصير اللي يقضي على الصراصير نهائياً؟",
+      "fr": "Bonjour et bienvenue! 👋 Comment allez-vous? Vous voulez découvrir notre médicament anti-caquerets qui élimine les cafards définitivement?"
+    },
+    "price": {
+      "ar": "💰 الثمن: 99 درهم بدل 150 درهم! خصم 34% لفترة محدودة!\n\n✅ الدفع عند الاستلام متاح\n✅ CCP / Chyra / Virement\n\nتبي تطلب الحين؟",
+      "fr": "💰 Prix: 99 MAD au lieu de 150 MAD! Réduction de 34% pour une durée limitée!\n\n✅ Paiement à la livraison disponible\n✅ CCP / Chyra / Virement\n\nVous voulez commander maintenant?"
+    },
+    "usage": {
+      "ar": "📋 طريقة الاستعمال سهلة جداً:\n\n1️⃣ حط نقطة صغيرة من الدواء في أماكن الصراصير\n2️⃣ خلف الثلاجة، في الخزائن، عند المجاري\n3️⃣ الصراصير اختفي خلال 24 ساعة!\n\n🔥 النتيجة مضمونة 100%",
+      "fr": "📋 Utilisation très facile:\n\n1️⃣ Mettez une petite goutte dans les zones infestées\n2️⃣ Derrière le frigo, dans les placards, près des canalisations\n3️⃣ Les cafards disparaissent en 24h!\n\n🔥 Résultats garantis à 100%"
+    },
+    "safety": {
+      "ar": "🛡️ المنتج آمن تماماً:\n\n✅ آمن على الأطفال والحيوانات الأليفة\n✅ ضمان استرجاع الأموال 30 يوم\n✅ نتائج مضمونة أو نرجعلك الفلوس\n\nما تحتاج تتردد!",
+      "fr": "🛡️ Produit totalement sûr:\n\n✅ Sûr pour les enfants et animaux\n✅ Garantie de remboursement 30 jours\n✅ Résultats garantis ou remboursé\n\nN'hésitez pas!"
+    },
+    "delivery": {
+      "ar": "🚚 التوصيل:\n\n📦 التوصيل للبيت عبر أمانة / كريونوبوست\n⏱️ المدة: 24-48 ساعة\n💰 الدفع عند الاستلام\n\nتحب تطلب الحين؟",
+      "fr": "🚚 Livraison:\n\n📦 Livraison à domicile via Amana / Chronopost\n⏱️ Délai: 24-48h\n💰 Paiement à la livraison\n\nVous souhaitez commander?"
+    },
+    "order": {
+      "ar": "🎉 ممتاز! لاختيار الطلب:\n\n1️⃣ أرسل لنا اسمك الكامل\n2️⃣ رقم الهاتف\n3️⃣ العنوان بالتفصيل\n\nسنؤكد لك الطلب في أقل من ساعة!",
+      "fr": "🎉 Parfait! Pour passer commande:\n\n1️⃣ Envoyez-nous votre nom complet\n2️⃣ Numéro de téléphone\n3️⃣ Adresse détaillée\n\nNous confirmerons votre commande en moins d'une heure!"
+    },
+    "offer": {
+      "ar": "🔥 عرض خاص!\n\nالآن بـ 99 درهم بدل 150 درهم!\nخصم 34% لفترة محدودة!\n\n⏰ العرض ينتهي قريباً!\n📦 توصيل مجاني\n💰 الدفع عند الاستلام\n\nلا تفوت الفرصة!",
+      "fr": "🔥 Offre spéciale!\n\nMaintenant à 99 MAD au lieu de 150 MAD!\nRéduction de 34% pour durée limitée!\n\n⏰ L'offre expire bientôt!\n📦 Livraison gratuite\n💰 Paiement à la livraison\n\nNe manquez pas l'offre!"
+    }
+  },
+  "quickReplies": {
+    "followUp": {
+      "ar": "شنو تبي تعرف أكثر؟",
+      "fr": "Que voulez-vous savoir d'autre?"
+    },
+    "options": {
+      "order": { "ar": "🛒 أريد أطلب", "fr": "🛒 Je veux commander" },
+      "price": { "ar": "💰 السعر", "fr": "💰 Prix" },
+      "usage": { "ar": "📋 طريقة الاستعمال", "fr": "📋 Comment utiliser" },
+      "human": { "ar": "👤 التحدث مع شخص", "fr": "👤 Parler à un agent" }
+    }
+  }
+}
